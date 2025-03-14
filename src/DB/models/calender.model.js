@@ -40,4 +40,4 @@ const calenderSchema = new Schema({
     timestamps: true
 })
 
-export default model = model("Calender", calenderSchema);
+export const calenderModel = model("Calender", calenderSchema);

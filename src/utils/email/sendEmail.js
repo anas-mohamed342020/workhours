@@ -3,28 +3,22 @@ import nodemailer from "nodemailer";
 
 export const sendEmail = asyncHandler(({ to, subject, html }) => {
   const transporter = nodemailer.createTransport({
-    host: "smtp.ethereal.email",
-    port: 465,
-    service: "gmail",
-    secure: true, // true for port 465, false for other ports
+    host: "smtp.titan.email",
+    port: 587,
+    secure: false,
     auth: {
-      user: process.env.USER_EMAIL,
-      pass: process.env.USER_PASSWORD,
+      user: process.env.EMAIL_USER,
+      pass: process.env.EMAIL_PASSWORD,
     },
   });
 
   async function main() {
     const info = await transporter.sendMail({
-      from: `Artovia "<${process.env.USER_EMAIL}>"`, // sender address
+      from: `DigitalH "<${process.env.EMAIL_USER}>"`,
       to,
-      subject, // Subject line
-      html, // html body
+      subject, 
+      html,
     });
   }
   main();
 });
-
-export const subject = {
-  register: "Activate Account",
-  resetPassword: "Reset Password",
-};

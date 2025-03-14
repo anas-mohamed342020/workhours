@@ -11,5 +11,3 @@ await bootstrap(app, express);
 app.listen(process.env.PORT, () => {
     console.log(`Server is running on port ${process.env.PORT}`);
 })
-const randomPassword = Math.random().toString(36).slice(-12);
-console.log(randomPassword);

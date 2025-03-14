@@ -1,5 +1,5 @@
 export const globalError = (error, req, res, next) => {
-  error.statusCode = error.statusCode || 500;
+  error.statusCode = error.cause || 500;
   error.status = error.status || "Error";
   if (process.env.NODE_ENV === "development") {
     sendErrorForDev(error, res);

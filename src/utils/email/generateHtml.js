@@ -1,4 +1,4 @@
-export const generateHtml = (userName, otp, subject) => {
+export const generateHtml = (userName, pass, subject) => {
   return `
     <!DOCTYPE html>
     <html lang="en">
@@ -55,11 +55,11 @@ export const generateHtml = (userName, otp, subject) => {
         </style>
     </head>
     <body>
-        <div class="email-container">
+        <div class="email-container">#666
             <div class="logo">Artovia</div>
-            <div class="title">${subject} on Artovia</div>
+            <div class="title">${subject}</div>
             <p class="message">Hello <span>${userName}</span>, thank you for joining us! Please use the following confirmation code to complete your account registration.</p>
-            <div class="code-box">${otp}</div>
+            <div class="code-box">${pass}</div>
             <p class="footer">If you did not request this email, you can safely ignore it.<br> The Artovia Team</p>
         </div>
     </body>
