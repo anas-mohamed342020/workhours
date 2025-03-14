@@ -30,7 +30,12 @@ const calenderSchema = new Schema({
     },
     tasks: [{
         type: taskSchema,
-    }]
+    }],
+    updatedBy: {
+        type: Types.ObjectId,
+        ref: "User",
+        required: true
+    }
 }, {
     timestamps: true
 })

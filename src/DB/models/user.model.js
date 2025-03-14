@@ -32,6 +32,13 @@ const userSChema = new Schema({
     phone:{
         type: String,
         required:true
+    },
+    passwordChanged: {
+        type: Boolean,
+        default: false
+    },
+    passwordChangedAt: {
+        type: Date,
     }
 }, {
     timestamps: true
