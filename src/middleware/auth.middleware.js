@@ -38,10 +38,7 @@ export const decodedToken = async ({
   if (!user) {
     return next(new Error("User not found", { cause: 404 }));
   }
-  console.log({logPasswordChangedAt:user.passwordChangedAt});
-  
-  // console.log({logPasswordChangedAt: user.passwordChangedAt?.getTime(), logIat: userData.iat});
-  if (user.passwordChangedAt?.getTime() >= userData.iat * 1000)
+    if (user.passwordChangedAt?.getTime() >= userData.iat * 1000)
     return next(new Error("please login again", { cause: 400 }));
   return user;
 };

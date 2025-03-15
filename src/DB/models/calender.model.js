@@ -5,6 +5,8 @@ const taskSchema = new Schema({
         type: String,
         required: true
     },
+    notes:String,
+    taskLink:String,
     start: {
         type: Date,
         required: true
@@ -20,7 +22,7 @@ const taskSchema = new Schema({
 const calenderSchema = new Schema({
     date: {
         type: Date,
-        required: true,
+        required: true,//14-3-2024
         min: [new Date(), 'Date must be in the future']
     },
     userId: {
@@ -34,7 +36,6 @@ const calenderSchema = new Schema({
     updatedBy: {
         type: Types.ObjectId,
         ref: "User",
-        required: true
     }
 }, {
     timestamps: true

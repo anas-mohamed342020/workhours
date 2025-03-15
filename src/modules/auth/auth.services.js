@@ -37,7 +37,6 @@ export const login = async (req, res, next) => {
         return next(new Error("Invalid password", { cause: 400 }))
     }
     const signature = user.role == roles.ADMIN ? process.env.ADMIN_ACCESS_TOKEN : process.env.USER_ACCESS_TOKEN
-    console.log({logSignature:signature});
     
     const token = sign({ _id: user._id }, signature)
     res.status(200).json({ message: "Login successful", token })
