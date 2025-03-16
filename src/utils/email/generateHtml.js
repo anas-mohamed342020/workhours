@@ -56,7 +56,7 @@ export const generateHtml = (userName, pass, subject) => {
     </head>
     <body>
         <div class="email-container">#666
-            <div class="logo">Artovia</div>
+            <div class="logo">DigitalH</div>
             <div class="title">${subject}</div>
             <p class="message">Hello <span>${userName}</span>, thank you for joining us! Please use the following confirmation code to complete your account registration.</p>
             <div class="code-box">${pass}</div>

@@ -1,24 +1,32 @@
-import asyncHandler from "express-async-handler";
 import nodemailer from "nodemailer";
 
-export const sendEmail = asyncHandler(({ to, subject, html }) => {
-  const transporter = nodemailer.createTransport({
-    host: "smtp.titan.email",
-    port: 587,
-    secure: false,
-    auth: {
-      user: process.env.EMAIL_USER,
-      pass: process.env.EMAIL_PASSWORD,
-    },
-  });
+// Email configuration
+const senderEmail = "karim.mohamed@digitalh.dev";
+const senderPassword = "nv$6FK|K;h2";
+const smtpServer = "smtp.titan.email";
+const smtpPort = 587;
 
-  async function main() {
-    const info = await transporter.sendMail({
-      from: `DigitalH "<${process.env.EMAIL_USER}>"`,
-      to,
-      subject, 
-      html,
+export async function sendEmailAndAppend({ recipientEmail, subject, body }) {
+  try {
+    const transporter = nodemailer.createTransport({
+      host: smtpServer,
+      port: smtpPort,
+      auth: {
+        user: senderEmail,
+        pass: senderPassword,
+      },
     });
+
+    async function main() {
+      const info = await transporter.sendMail({
+        from: senderEmail,
+        to: recipientEmail,
+        subject,
+        html: body,
+      });
+    }
+    main();
+  } catch (error) {
+    console.error("Error sending email:", error);
   }
-  main();
-});
+}
