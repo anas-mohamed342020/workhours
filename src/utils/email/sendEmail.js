@@ -1,10 +1,13 @@
 import nodemailer from "nodemailer";
-
+import dotenv from "dotenv";
+dotenv.config();
 // Email configuration
-const senderEmail = "karim.mohamed@digitalh.dev";
-const senderPassword = "nv$6FK|K;h2";
-const smtpServer = "smtp.titan.email";
-const smtpPort = 587;
+const senderEmail = process.env.SENDER_EMAIL ;
+const senderPassword = process.env.SENDER_PASSWORD ;
+const smtpServer = process.env.SMTP_SERVER;
+const smtpPort = process.env.SMTP_PORT;
+
+console.log({senderEmail, senderPassword, smtpServer, smtpPort});
 
 export async function sendEmailAndAppend({ recipientEmail, subject, body }) {
   try {
