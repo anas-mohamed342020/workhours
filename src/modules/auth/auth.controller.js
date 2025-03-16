@@ -28,6 +28,7 @@ router.patch(
     "/change-password",
     validation(authValidation.changePasswordValidation),
     auth(),
+    allowTo(roles.USER),
     AsyncHandler(authServices.changePassword)
 ); // user only
 

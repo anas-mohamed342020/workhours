@@ -4,6 +4,8 @@ import { globalError } from "./middleware/errorMiddleware.js";
 import cors from "cors";
 import authRouter from "./modules/auth/auth.controller.js";
 import userRouter from "./modules/user/user.controller.js";
+import calenderRouter from "./modules/calender/calender.controller.js";
+
 export const bootstrap = async (app, express) => {
     app.use(express.json());
     app.use(morgan('dev'))
@@ -13,6 +15,8 @@ export const bootstrap = async (app, express) => {
 
     app.use('/auth',authRouter);
     app.use('/user',userRouter);
+    app.use('/calender',calenderRouter);
+
 
     app.all("*", (req, res, next) => {
         return next(new Error(`Route ${req.originalUrl} Not Found!!`, { cause: 400 }));

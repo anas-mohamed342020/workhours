@@ -4,8 +4,6 @@ import dotenv from 'dotenv';
 dotenv.config();
 const app = express();
 
-
-
 await bootstrap(app, express);
 
 app.listen(process.env.PORT, () => {

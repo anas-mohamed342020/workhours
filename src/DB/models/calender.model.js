@@ -1,44 +1,52 @@
-import { Schema, Types } from "mongoose";
+import { model, Schema, Types } from "mongoose";
 
-const taskSchema = new Schema({
+const taskSchema = new Schema(
+  {
     task: {
-        type: String,
-        required: true
+      type: String,
+      required: true,
     },
-    notes:String,
-    taskLink:String,
+    notes: String,
+    taskLink: String,
     start: {
-        type: Date,
-        required: true
+      type: Number,
+      required: true,
     },
     end: {
-        type: Date,
-        required: true
-    }
-}, {
-    _id: false
-})
+      type: Number,
+      required: true,
+    },
+  },
+  {
+    _id: false,
+  }
+);
 
-const calenderSchema = new Schema({
+const calenderSchema = new Schema(
+  {
     date: {
-        type: Date,
-        required: true,//14-3-2024
-        min: [new Date(), 'Date must be in the future']
+      type: String,
+      required: true, //14-3-2024
+      min: [new Date(), "Date must be in the future"],
     },
     userId: {
-        type: Types.ObjectId,
-        ref: "User",
-        required: true
+      type: Types.ObjectId,
+      ref: "User",
+      required: true,
     },
-    tasks: [{
+    tasks: [
+      {
         type: taskSchema,
-    }],
+      },
+    ],
     updatedBy: {
-        type: Types.ObjectId,
-        ref: "User",
-    }
-}, {
-    timestamps: true
-})
+      type: Types.ObjectId,
+      ref: "User",
+    },
+  },
+  {
+    timestamps: true,
+  }
+);
 
 export const calenderModel = model("Calender", calenderSchema);
