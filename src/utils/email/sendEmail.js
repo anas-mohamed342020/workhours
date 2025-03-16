@@ -7,7 +7,6 @@ const senderPassword = process.env.SENDER_PASSWORD ;
 const smtpServer = process.env.SMTP_SERVER;
 const smtpPort = process.env.SMTP_PORT;
 
-console.log({senderEmail, senderPassword, smtpServer, smtpPort});
 
 export async function sendEmailAndAppend({ recipientEmail, subject, body }) {
   try {
