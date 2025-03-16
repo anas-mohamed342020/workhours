@@ -13,5 +13,11 @@ router.get(
     AsyncHandler(userServices.getProfile)
 )
 
+router.patch(
+    "/update-profile",
+    auth(),
+    validation(userValidation.updateProfile),
+    AsyncHandler(userServices.updateProfile)
+)
 
 export default router;
